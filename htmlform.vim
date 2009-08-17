@@ -5,7 +5,8 @@ function! ChangeUL() range
 
     while l:count <= a:lastline
         let l:str = getline(l:count)
-        let l:out = substitute(l:str, '^\s\+\(.\+\)', '<li>\1<\/li>', '')
+        let l:out = substitute(l:str, '^\s\+', '', '')
+        let l:out = substitute(l:str, '^\(.\+\)$', '<li>\1<\/li>', '')
         call setline(l:count, l:out)
         let l:count = l:count + 1
     endwhile
@@ -30,10 +31,6 @@ function! ChangeTable() range
     call append(a:lastline, '</table>')
     call append(a:firstline - 1, '<table>')
 endfunction
-
-
-
-
 
 
 
